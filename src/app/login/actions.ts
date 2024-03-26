@@ -5,6 +5,7 @@ import { redirect } from 'next/navigation'
 
 import { createClient } from '@/app/utils/supabase/server'
 
+
 export async function login(formData: FormData) {
   const supabase = createClient()
 
@@ -21,8 +22,8 @@ export async function login(formData: FormData) {
     redirect('/error')
   }
 
-  revalidatePath('/', 'layout')
-  redirect('/')
+  revalidatePath('/private', 'layout')
+  redirect('/private')
 }
 
 export async function signup(formData: FormData) {

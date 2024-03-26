@@ -9,8 +9,16 @@ export default async function PrivatePage() {
 
   const { data, error } = await supabase.auth.getUser()
   if (error || !data?.user) {
-    redirect('/')
+    console.log("Authentication Error: " + error?.message)
+    redirect('/error')
   }
 
-  return <p>Hello {data.user.email}</p>
+  return (
+    <div className="container">
+      <div className="container naax-w-screen-sm mx-auto">
+        <p>Hello {data.user.email}</p>
+        
+      </div>
+    </div>
+  )
 }
